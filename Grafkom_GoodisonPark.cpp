@@ -250,6 +250,52 @@ void init (void)
 
 }
 
+int balok (float n) {
+	glBegin(GL_QUADS);
+    glVertex3f(-n, n/2, n/2);
+    glVertex3f(n, n/2, n/2);
+    glVertex3f(n, -n/2, n/2);
+    glVertex3f(-n, -n/2, n/2);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+    glVertex3f(-n, n/2, -n/2);
+    glVertex3f(n, n/2, -n/2);
+    glVertex3f(n, -n/2, -n/2);
+    glVertex3f(-n, -n/2, -n/2);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+    glVertex3f(-n, n/2, -n/2);
+    glVertex3f(-n, n/2, n/2);
+    glVertex3f(-n, -n/2, n/2);
+    glVertex3f(-n, -n/2, -n/2);
+    glEnd();
+ 
+    glBegin(GL_QUADS);
+    glVertex3f(n, n/2, -n/2);
+    glVertex3f(n, n/2, n/2);
+    glVertex3f(n, -n/2, n/2);
+    glVertex3f(n, -n/2, -n/2);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+    glVertex3f(-n, n/2, n/2);
+    glVertex3f(n, n/2, n/2);
+    glVertex3f(n, n/2, -n/2);
+    glVertex3f(-n, n/2, -n/2);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+    glVertex3f(-n, -n/2, n/2);
+    glVertex3f(n, -n/2, n/2);
+    glVertex3f(n, -n/2, -n/2);
+    glVertex3f(-n, -n/2, -n/2);
+    glEnd();
+	
+}
+
+
 int kubus (float n) {
 	glBegin(GL_QUADS);
     glVertex3f(-n/2, n/2, n/2);
@@ -1904,6 +1950,58 @@ else {
 }
 }
 
+void broadcaster(){
+glPushMatrix();
+
+	glColor3f(1.0, 1.0, 1.0);
+glRotatef(220,0,1,0);
+glTranslatef(-9,41,130);
+
+balok(12);
+
+	glColor3f(0.15, 0.15, 0.15);
+glBegin(GL_QUADS);
+    glVertex3f(-12-0.01, 12/2, -12/2);
+    glVertex3f(-12-0.01, 12/2, 12/2);
+    glVertex3f(-12-0.01, -12/2, 12/2);
+    glVertex3f(-12-0.01, -12/2, -12/2);
+    glEnd();
+ 
+    glBegin(GL_QUADS);
+    glVertex3f(12+0.01, 12/2, -12/2);
+    glVertex3f(12+0.01, 12/2, 12/2);
+    glVertex3f(12+0.01, -12/2, 12/2);
+    glVertex3f(12+0.01, -12/2, -12/2);
+    glEnd();
+glPopMatrix(); 
+
+glPushMatrix();
+glRotatef(220,0,1,0);
+glTranslatef(-9,37,130);
+glColor3f(0.15, 0.15, 0.15);
+    glBegin(GL_QUADS);
+    glVertex3f(-12-0.01, 12/6, -12/2-0.01);
+    glVertex3f(12+0.01, 12/6, -12/2-0.01);
+    glVertex3f(12+0.01, -12/6, -12/2-0.01);
+    glVertex3f(-12-0.01, -12/6, -12/2-0.01);
+    glEnd();
+glPopMatrix();
+
+glPushMatrix();
+glRotatef(220,0,1,0);
+glTranslatef(-9,37,130);
+glColor3f(0.15, 0.15, 0.15);
+    glBegin(GL_QUADS);
+    glVertex3f(-12.012, 10.01, 12/2);
+    glVertex3f(12.012, 10.01, 12/2);
+    glVertex3f(12.012, 10.01, -12/2);
+    glVertex3f(-12.012, 10.01, -12/2);
+    glEnd();
+    
+glPopMatrix();
+
+}
+
 void tampil(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1929,7 +2027,7 @@ void tampil(void)
 	papanscore();
 	pilar();
 	bola();
-	
+	broadcaster();
 	glutSwapBuffers();
 }
 
