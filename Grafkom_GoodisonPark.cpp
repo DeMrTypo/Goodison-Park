@@ -857,12 +857,45 @@ float l=25.75+2.5;
 float c = 28.5;
 float b = 25.5+2.5;
 int a=58;
-glBegin(GL_QUADS);
+
+    glBegin(GL_QUADS);
 	glColor3f(0.7, 0.7, 0.7);
     glVertex3f(-60-2.5, 45-5 , 10.0+2.5+40+2.5);
     glVertex3f(60+2.5,45-5 ,10.0+2.5+40+2.5);
     glVertex3f(60+2.5, 20.133+4 , 10.0+2.5+10+2.5);
     glVertex3f(-60-2.5, 20.133+4, 10.0+2.5+10+2.5); 
+    glEnd();
+    
+     glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 20.133+4 , 10.0+2.5+10+2.5);
+    glVertex3f(60+2.5,20.133+4,10.0+2.5+10+2.5);
+    glVertex3f(60+2.5, 20.133, 10.0+2.5+10+2.5);
+    glVertex3f(-60-2.5, 20.133,10.0+2.5+10+2.5); 
+    glEnd();
+    
+     glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(60+2.5, 45-5 , 10.0+2.5+40+2.5);
+    glVertex3f(60+2.5, 24.133 ,10.0+2.5+10+2.5);
+    glVertex3f(60+2.5, 20.133, 10.0+2.5+10+2.5);
+    glVertex3f(60+2.5, 45-5-4, 10.0+2.5+40+2.5); 
+    glEnd();
+    
+     glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5 , 10.0+2.5+40+2.5);
+    glVertex3f(-60-2.5, 24.133 ,10.0+2.5+10+2.5);
+    glVertex3f(-60-2.5, 20.133, 10.0+2.5+10+2.5);
+    glVertex3f(-60-2.5, 45-5-4, 10.0+2.5+40+2.5); 
+    glEnd();
+    
+    glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5-4 , 10.0+2.5+40+2.5);
+    glVertex3f(60+2.5,45-5-4 ,10.0+2.5+40+2.5);
+    glVertex3f(60+2.5, 20.133 , 10.0+2.5+10+2.5);
+    glVertex3f(-60-2.5, 20.133,10.0+2.5+10+2.5); 
     glEnd();
     
 //depan
@@ -922,6 +955,38 @@ glBegin(GL_QUADS);
     glVertex3f(-60-2.5-10, 22.133+2 , 10.0+5);
     glVertex3f(-60-2.5-10, 22.133+2, -85-5); 
     glEnd();	
+    
+glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5-40, 45-5-4 , -85-5);
+    glVertex3f(-60-2.5-40,45-5-4 ,10.0+5);
+    glVertex3f(-60-2.5-10, 22.133+2-4 , 10.0+5);
+    glVertex3f(-60-2.5-10, 22.133+2-4, -85-5); 
+    glEnd();    
+    
+ glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5-10, 22.133+2 , -85-5);
+    glVertex3f(-60-2.5-10,22.133+2 ,10.0+5);
+    glVertex3f(-60-2.5-10, 22.133+2-4 , 10.0+5);
+    glVertex3f(-60-2.5-10, 22.133+2-4, -85-5); 
+    glEnd();      
+	
+   glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5-10,22.133+2  , 10.0+5);
+    glVertex3f(-60-2.5-10,22.133+2-4 ,10.0+5);
+    glVertex3f(-60-2.5-40, 45-5-4 , 10.0+5);
+    glVertex3f(-60-2.5-40, 45-5, 10.0+5); 
+    glEnd();	 
+    
+     glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5-10,22.133+2  , -85-5);
+    glVertex3f(-60-2.5-10,22.133+2-4 ,-85-5);
+    glVertex3f(-60-2.5-40, 45-5-4 , -85-5);
+    glVertex3f(-60-2.5-40, 45-5, -85-5); 
+    glEnd();
     
     //kiri
 for (i=1; i<=7; i++){
@@ -1234,6 +1299,7 @@ float k = -52.5;
 int m = 12;
 int p= 12;
 int o = -46;
+	
 	//kiri
 glPushMatrix();
 glColor3f(1.0, 1.0, 1.0);
@@ -1455,6 +1521,51 @@ u+=1;
 
 }
 
+void papanscore()
+{
+glPushMatrix();
+glColor3f(0, 0, 0);
+glTranslatef(60.5,39.5,-37);
+glScalef(1.0,14.0,24.0);
+kubus(1);
+glPopMatrix();
+
+glPushMatrix();
+glColor3f(0.4, 0.4, 0.4);
+glTranslatef(61.5,39.5,-37);
+glScalef(1.0,16.0,25.0);
+kubus(1);
+glPopMatrix();
+
+glPushMatrix();
+glColor3f(0.4, 0.4, 0.4);
+glTranslatef(60.5,47,-37);
+glScalef(1.0,1.0,25.0);
+kubus(1);
+glPopMatrix();
+
+glPushMatrix();
+glColor3f(0.4, 0.4, 0.4);
+glTranslatef(60.5,32,-37);
+glScalef(1.0,1.0,25.0);
+kubus(1);
+glPopMatrix();
+
+glPushMatrix();
+glColor3f(0.4, 0.4, 0.4);
+glTranslatef(60.5,39.5,-24.5);
+glScalef(1.0,16.0,1.0);
+kubus(1);
+glPopMatrix();
+
+glPushMatrix();
+glColor3f(0.4, 0.4, 0.4);
+glTranslatef(60.5,39.5,-49.5);
+glScalef(1.0,16.0,1.0);
+kubus(1);
+glPopMatrix();
+}
+
 void bench(){
 	int i;
 int j;
@@ -1525,6 +1636,7 @@ else {
 }
 }
 }
+
 void tampil(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -1533,7 +1645,6 @@ void tampil(void)
 	glRotatef(xrot , 1.0f ,0.0f ,0.0f);
 	glRotatef(yrot , 0.0f , 1.0f , 0.0f);
 	glTranslatef(X,Y,Z);
-	glPushMatrix();
 	lapangan();
 	lingkaran();
 	gawang();
@@ -1547,7 +1658,7 @@ void tampil(void)
     tunnel();
     pemisah();
     bench();
-	
+	papanscore();
 	glutSwapBuffers();
 }
 
