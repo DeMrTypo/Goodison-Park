@@ -127,7 +127,7 @@ int main (int argc , char **argv)
 void init (void)
 {
 	
-	glClearColor (1.0 , 1.0 , 1.0 ,1.0);
+	glClearColor (0.0 , 0.0 , 0.0 ,1.0);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_COLOR_MATERIAL);
@@ -232,12 +232,21 @@ void layoutkursi()
     glVertex3f(60+2.5, -0.133 , -85-5);
      glEnd();
      
+     
      //belakang kiri kanan
     glBegin(GL_POLYGON);
     glColor3f(0.7, 0.7, 0.7);
     glVertex3f(-60, 20,-85-5-40);
     glVertex3f(-60-40-2.5, 20 , -85-5);
     glVertex3f(-60-2.5, -0.133 , -85-5);
+     glEnd();
+     
+      //belakang kiri kanan atas
+    glBegin(GL_POLYGON);
+    glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5 , -85-2.5-40-2.5);
+    glVertex3f(-60-2.5, 25.133,-85-2.5-10-2.5); 
+    
      glEnd();
      
       //depan kanan
@@ -848,6 +857,105 @@ p-=3;
 }
 }
 
+void pilar(){
+//belakang	
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(46,30,-110);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(16,30,-110);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(-14,30,-110);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(-44,30,-110);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+//depan
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(46,30,35);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(16,30,35);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(-14,30,35);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(-44,30,35);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+//kiri
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(-82,30,-16);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(-82,30,-61);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+//kanan
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(82,30,-16);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+
+glPushMatrix();
+glColor3f(0.1, 0.1, 0.1);
+glTranslatef(82,30,-61);
+glScalef(1.0,50.0,1.0);
+kubus(1);
+glPopMatrix();	
+}
+
+void bola(){
+glPushMatrix();
+glColor3f(0.5, 0.0, 0.0);
+glTranslatef(0,1.5,-38);
+glutSolidSphere(1.5,50,10);
+glPopMatrix();	
+
+}
 
 void tingkatdepan(){
 int i;	
@@ -1659,6 +1767,8 @@ void tampil(void)
     pemisah();
     bench();
 	papanscore();
+	pilar();
+	bola();
 	glutSwapBuffers();
 }
 
