@@ -56,9 +56,9 @@ void DrawCircle(float cx, float cz, float cy ,  float r, int num_segments)
 	glEnd(); 
 }
 
-void seperempatCircle(float cx, float cz, float cy ,  float r, int num_segments) 
+void SetengahCircle(float cx, float cz, float cy ,  float r, int num_segments) 
 { 
-	float theta = 2 * 3.1415926 / float(num_segments); 
+	float theta = 1 * 3.1415926 / float(num_segments); 
 	float tangetial_factor = tanf(theta);//calculate the tangential factor 
 
 	float radial_factor = cosf(theta);//calculate the radial factor 
@@ -67,8 +67,79 @@ void seperempatCircle(float cx, float cz, float cy ,  float r, int num_segments)
 
 	float y = 0; 
     
-	glBegin(GL_LINE_LOOP); 
-	for(int ii = 0; ii < num_segments; ii++) 
+	glBegin(GL_LINE_STRIP); 
+	for(int ii = 0; ii <  num_segments; ii++) 
+	{  
+		glVertex3f(y + cx, cz ,x + cy);//output vertex 
+        
+		//calculate the tangential vector 
+		//remember, the radial vector is (x, y) 
+		//to get the tangential vector we flip those coordinates and negate one of them 
+
+		float tx = y; 
+		float ty = -x; 
+        
+		//add the tangential vector 
+
+		x += tx * tangetial_factor; 
+		y += ty * tangetial_factor; 
+        
+		//correct using the radial factor 
+
+		x *= radial_factor; 
+		y *= radial_factor; 
+	} 
+	glEnd(); 
+}
+void SetengahCircleNormal(float cx, float cz, float cy ,  float r, int num_segments) 
+{ 
+	float theta = -1 * 3.1415926 / float(num_segments); 
+	float tangetial_factor = tanf(theta);//calculate the tangential factor 
+
+	float radial_factor = cosf(theta);//calculate the radial factor 
+	
+	float x = r;//we start at angle = 0 
+
+	float y = 0; 
+    
+	glBegin(GL_LINE_STRIP); 
+	for(int ii = 0; ii <  num_segments; ii++) 
+	{  
+		glVertex3f(y + cx, cz ,x + cy);//output vertex 
+        
+		//calculate the tangential vector 
+		//remember, the radial vector is (x, y) 
+		//to get the tangential vector we flip those coordinates and negate one of them 
+
+		float tx = y; 
+		float ty = -x; 
+        
+		//add the tangential vector 
+
+		x += tx * tangetial_factor; 
+		y += ty * tangetial_factor; 
+        
+		//correct using the radial factor 
+
+		x *= radial_factor; 
+		y *= radial_factor; 
+	} 
+	glEnd(); 
+}
+
+void seperempatCircle(float cx, float cz, float cy ,  float r, int num_segments) 
+{ 
+	float theta = -1 * 3.1415926 / float(num_segments); 
+	float tangetial_factor = tanf(theta);//calculate the tangential factor 
+
+	float radial_factor = cosf(theta);//calculate the radial factor 
+	
+	float x = r;//we start at angle = 0 
+
+	float y = 0; 
+    
+	glBegin(GL_LINE_STRIP); 
+	for(int ii = 0; ii < 0.5 * num_segments; ii++) 
 	{ 
 		glVertex3f(x + cx, cz ,y + cy);//output vertex 
         
@@ -81,8 +152,42 @@ void seperempatCircle(float cx, float cz, float cy ,  float r, int num_segments)
         
 		//add the tangential vector 
 
-		x += tx * -0.5*tangetial_factor; 
-		y += ty * -0.5*tangetial_factor; 
+		x += tx * tangetial_factor; 
+		y += ty * tangetial_factor; 
+        
+		//correct using the radial factor 
+
+		x *= radial_factor; 
+		y *= radial_factor; 
+	} 
+	glEnd(); 
+}void seperempatCircleNormal(float cx, float cz, float cy ,  float r, int num_segments) 
+{ 
+	float theta = 1 * 3.1415926 / float(num_segments); 
+	float tangetial_factor = tanf(theta);//calculate the tangential factor 
+
+	float radial_factor = cosf(theta);//calculate the radial factor 
+	
+	float x = r;//we start at angle = 0 
+
+	float y = 0; 
+    
+	glBegin(GL_LINE_STRIP); 
+	for(int ii = 0; ii < 0.5 * num_segments; ii++) 
+	{ 
+		glVertex3f(x + cx, cz ,y + cy);//output vertex 
+        
+		//calculate the tangential vector 
+		//remember, the radial vector is (x, y) 
+		//to get the tangential vector we flip those coordinates and negate one of them 
+
+		float tx = -y; 
+		float ty = x; 
+        
+		//add the tangential vector 
+
+		x += tx * tangetial_factor; 
+		y += ty * tangetial_factor; 
         
 		//correct using the radial factor 
 
@@ -99,6 +204,12 @@ void lingkaran()
     DrawCircle(-0.5, 0.13, -37.5 , 10, 360);
     
     seperempatCircle(-40, 0.13, -2.5 , 5, 50);
+    seperempatCircleNormal(-40, 0.13, -72.5 , 5, 50);
+    seperempatCircleNormal(40, 0.13, -2.5 , -5, 50);
+    seperempatCircle(40, 0.13, -72.5 , -5, 50);
+    SetengahCircle(24,0.13,-37,2,100);
+    SetengahCircleNormal(-24,0.13,-37,2,100);
+    glLineWidth(1.0);
     //corner
 }
 
@@ -129,9 +240,9 @@ void init (void)
 	
 	glClearColor (0.0 , 0.0 , 0.0 ,1.0);
 	glMatrixMode(GL_PROJECTION);
-	glEnable(GL_LIGHTING);
+//	glEnable(GL_LIGHTING);
 	glEnable(GL_COLOR_MATERIAL);
-	glEnable(GL_LIGHT0);
+//	glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
 	is_depth = 1;
 	glMatrixMode(GL_MODELVIEW);
