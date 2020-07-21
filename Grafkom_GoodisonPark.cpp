@@ -233,7 +233,7 @@ void layoutkursi()
      glEnd();
      
      
-     //belakang kiri kanan
+     //belakang kiri 
     glBegin(GL_POLYGON);
     glColor3f(0.7, 0.7, 0.7);
     glVertex3f(-60, 20,-85-5-40);
@@ -241,14 +241,8 @@ void layoutkursi()
     glVertex3f(-60-2.5, -0.133 , -85-5);
      glEnd();
      
-      //belakang kiri kanan atas
-    glBegin(GL_POLYGON);
-    glColor3f(0.7, 0.7, 0.7);
-    glVertex3f(-60-2.5, 45-5 , -85-2.5-40-2.5);
-    glVertex3f(-60-2.5, 25.133,-85-2.5-10-2.5); 
-    
-     glEnd();
-     
+
+
       //depan kanan
     glBegin(GL_POLYGON);
     glColor3f(0.7, 0.7, 0.7);
@@ -1149,6 +1143,60 @@ e-=3;
 }
 }
 
+void tingkatbelakangkiri(){
+	
+	glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5 , -85-2.5-40-2.5);
+    glVertex3f(-60-2.5, 24.133,-85-2.5-10-2.5); 
+     glVertex3f(-60-2.5-10, 22.133+2, -85-5);
+   glVertex3f(-60-2.5-40, 45-5 , -85-5);
+    glEnd();
+    
+   	glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5-4 , -85-2.5-40-2.5);
+    glVertex3f(-60-2.5, 23.133+2-4,-85-2.5-10-2.5); 
+    glVertex3f(-60-2.5-10, 22.133+2-4, -85-5);
+     glVertex3f(-60-2.5-40, 45-5-4 , -85-5);
+     glEnd();
+     
+    glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 24.133,-85-2.5-10-2.5);
+    glVertex3f(-60-2.5, 22.133+2-4,-85-2.5-10-2.5); 
+    glVertex3f(-60-2.5-10, 22.133+2-4, -85-5);
+    glVertex3f(-60-2.5-10, 22.133+2, -85-5);
+
+    glEnd();
+}
+
+tingkatdepankiri(){
+	glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5 , 10.0+2.5+40+2.5);
+    glVertex3f(-60-2.5-40,45-5 ,10.0+5); 
+    glVertex3f(-60-2.5-10, 22.133+2 , 10.0+5);
+   glVertex3f(-60-2.5, 20.133+4, 10.0+2.5+10+2.5);
+    glEnd();
+    
+  glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5, 45-5-4 , 10.0+2.5+40+2.5);
+    glVertex3f(-60-2.5-40,45-5-4 ,10.0+5); 
+     glVertex3f(-60-2.5-10, 22.133+2-4 , 10.0+5);
+   glVertex3f(-60-2.5, 20.133+4-4, 10.0+2.5+10+2.5);
+    glEnd();
+     
+    glBegin(GL_QUADS);
+	glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-60-2.5-10, 22.133+2 , 10.0+5);
+    glVertex3f(-60-2.5-10, 22.133+2-4 , 10.0+5); 
+    glVertex3f(-60-2.5, 20.133+4-4, 10.0+2.5+10+2.5);
+    glVertex3f(-60-2.5, 20.133+4, 10.0+2.5+10+2.5);
+     glEnd();
+}
+
 void pinggirlapangan()
 {
 	glBegin(GL_QUADS);
@@ -1763,12 +1811,14 @@ void tampil(void)
 	gawang();
 	kursi();
 	tingkatbelakang(); tingkatdepan(); tingkatkiri();
+	tingkatbelakangkiri(); tingkatdepankiri();
     tunnel();
     pemisah();
     bench();
 	papanscore();
 	pilar();
 	bola();
+	
 	glutSwapBuffers();
 }
 
