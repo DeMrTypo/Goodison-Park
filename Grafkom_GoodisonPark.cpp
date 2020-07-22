@@ -338,14 +338,22 @@ void dinding()
 	kubus(1);
 	glPopMatrix();
 	
-	//tutupkiribawh
+	//tutupkiriatas
 	glBegin(GL_POLYGON);
     glColor3f(0.7, 0.7, 0.7);
     glVertex3f(-105.5, -4.75, 15 );
     glVertex3f(-62.5 , -4.75 , 15);
     glVertex3f(-62.5, -4.75 , 62);
      glEnd();
-	
+     
+     //tutupkiribawah
+     glBegin(GL_POLYGON);
+    glColor3f(0.7, 0.7, 0.7);
+    glVertex3f(-105.5, -4.75, -90 );
+    glVertex3f(-62.5 , -4.75 , -90);
+    glVertex3f(-62.5, -4.75 ,-134);
+     glEnd();
+     
 	//bawah 2
 	glPushMatrix();
 	glColor3f(1,1,1);
