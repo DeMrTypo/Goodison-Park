@@ -19,6 +19,7 @@ int is_depth;
 int X = 0;
 int Y = 0;
 int Z = 0;
+
 int balok (float n) {
 	glBegin(GL_QUADS);
     glVertex3f(-n, n/2, n/2);
@@ -555,7 +556,7 @@ int main (int argc , char **argv)
 	init();
 	glutDisplayFunc(tampil);
 	glutReshapeFunc(ukuran);
-	
+	glViewport(50,80,800,850);
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
 	
