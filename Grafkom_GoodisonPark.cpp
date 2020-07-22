@@ -2307,7 +2307,7 @@ void keyboard(unsigned char key , int x, int y)
 	{
 		case'w':
 		case'W':
-		    Z+=3;
+		    Y+=3;
 			break;
 		case'd':
 		case'D':
@@ -2315,45 +2315,19 @@ void keyboard(unsigned char key , int x, int y)
 			break;
 		case's':
 		case'S':
-			Z-=3;
+			Y-=3;
 			break;
 		case'a':
 		case'A':
 			X-=3;
 			break;
-		case'7':
-			Y+=3;
+        case'Z' :
+		case'z' :
+			Z+=3;
 			break;
-		case'9':
-			Y-=3;
-			break;
-		case'2':
-			X+=2;
-			Y+=1;
-			break;
-		case'8':
-			X-=2;
-			Y+=1;
-			break;
-		case'6':
-			X+=2;
-			Z+=1;
-			break;
-		case'4':
-			X-=2;
-			Z+=1;
-			break;
-		case'5':
-			if (is_depth)
-			{
-				is_depth = 0;
-				glDisable(GL_DEPTH_TEST);
-			}
-			else
-			{
-				is_depth = 1;
-				glEnable(GL_DEPTH_TEST);
-			}	
+		case 'X':	
+		case 'x':
+			Z-=3;
 	}
 	tampil();
 }
