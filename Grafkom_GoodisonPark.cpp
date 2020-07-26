@@ -764,7 +764,7 @@ int main (int argc , char **argv)
 	init();
 	glutDisplayFunc(tampil);
 	glutReshapeFunc(ukuran);
-	//glViewport(50,80,800,850);
+	glViewport(50,80,800,850);
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
 	
@@ -780,9 +780,9 @@ void init (void)
 	
 	glClearColor (0.0 , 0.0 , 0.0 ,1.0);
 	glMatrixMode(GL_PROJECTION);
-//	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHTING);
 	glEnable(GL_COLOR_MATERIAL);
-//	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
 	is_depth = 1;
 	glMatrixMode(GL_MODELVIEW);
