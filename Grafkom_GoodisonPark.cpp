@@ -822,9 +822,9 @@ void init (void)
 	glMatrixMode(GL_PROJECTION);
 	Image* image = loadBMP("Donny1.bmp");
 	_textureId = loadTexture(image);
-	//glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHTING);
 	glEnable(GL_COLOR_MATERIAL);
-//	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
 	is_depth = 1;
 	glMatrixMode(GL_MODELVIEW);
