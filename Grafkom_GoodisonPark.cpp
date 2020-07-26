@@ -3,6 +3,8 @@
 #include <glut.h>
 #include <math.h>
 
+
+int p=0;
 void init(void);
 void tampil(void);
 void mouse ( int button , int state , int x , int y);
@@ -17,8 +19,8 @@ float ydiff = 0.0f;
 bool mouseDown = false;
 int is_depth;
 int X = 0;
-int Y = 0;
-int Z = 0;
+int Y = -90;
+int Z = 140;
 
 int balok (float n) {
 	glBegin(GL_QUADS);
@@ -67,7 +69,7 @@ int balok (float n) {
 void broadcaster(){
 glPushMatrix();
 
-	glColor3f(1.0, 1.0, 1.0);
+glColor3f(1.0, 1.0, 1.0);
 glRotatef(220,0,1,0);
 glTranslatef(-9,41,130);
 
@@ -2572,6 +2574,100 @@ glBegin(GL_QUADS);
     glEnd();	
 }
 
+void animasi(){
+
+if (p==1){
+
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 45, -42);
+    glVertex3f(59.91, 45, -40);
+    glVertex3f(59.91, 35, -40);
+    glVertex3f(59.91, 35, -42);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 45, -42);
+    glVertex3f(59.91, 45, -35);
+    glVertex3f(59.91, 44, -35);
+    glVertex3f(59.91, 44, -42);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 41, -42);
+    glVertex3f(59.91, 41, -35);
+    glVertex3f(59.91, 40, -35);
+    glVertex3f(59.91, 40, -42);
+    glEnd();
+    
+      glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 36, -42);
+    glVertex3f(59.91, 36, -35);
+    glVertex3f(59.91, 35, -35);
+    glVertex3f(59.91, 35, -42);
+    glEnd();
+    
+}
+
+else if  (p==2){
+
+    glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 45, -42);
+    glVertex3f(59.91, 45, -40);
+    glVertex3f(59.91, 35, -40);
+    glVertex3f(59.91, 35, -42);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 45, -42);
+    glVertex3f(59.91, 45, -35);
+    glVertex3f(59.91, 44, -35);
+    glVertex3f(59.91, 44, -42);
+    glEnd();
+    
+     glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 42, -42);
+    glVertex3f(59.91, 42, -35);
+    glVertex3f(59.91, 41, -35);
+    glVertex3f(59.91, 41, -42);
+    glEnd();
+    
+}  
+
+else if  (p==3){
+
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 45, -42);
+    glVertex3f(59.91, 45, -40);
+    glVertex3f(59.91, 35, -40);
+    glVertex3f(59.91, 35, -42);
+    glEnd();
+    
+    glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 45, -42);
+    glVertex3f(59.91, 45, -35);
+    glVertex3f(59.91, 44, -35);
+    glVertex3f(59.91, 44, -42);
+    glEnd();
+    
+      glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(59.91, 36, -42);
+    glVertex3f(59.91, 36, -35);
+    glVertex3f(59.91, 35, -35);
+    glVertex3f(59.91, 35, -42);
+    glEnd();
+}  
+}
+
 void tampil(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -2604,7 +2700,21 @@ void tampil(void)
 	atapbelakang();
 	tembokbelakang();
 	tembokdepan();
+	
+	animasi();
+	
 	glutSwapBuffers();
+}
+
+
+void update(int value) {
+	p+= 1.0;
+	if (p>3){
+		p-=3;
+	}
+	
+	glutPostRedisplay();
+	glutTimerFunc(2500, update, 0);
 }
 
 
@@ -2681,4 +2791,5 @@ void ukuran (int lebar , int tinggi)
 	gluPerspective(120.0 , lebar/tinggi , 5.0 , 5000.0);
 	glTranslatef(0.0 , -5.0 , -150.0);
 	glMatrixMode(GL_MODELVIEW);
+	glutTimerFunc(25, update, 0);
 }
