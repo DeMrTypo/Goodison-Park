@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <glut.h>
 #include <math.h>
+#include "imageloader.h"
 
-
+GLuint _textureId ;
 int p=0;
 void init(void);
 void tampil(void);
@@ -21,7 +22,13 @@ int is_depth;
 int X = 0;
 int Y = -90;
 int Z = 140;
-
+GLuint loadTexture(Image* image) {
+	GLuint textureId , textureId1;
+	glGenTextures(1, &textureId);
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image->width, image->height, 0, GL_RGB, GL_UNSIGNED_BYTE, image->pixels);
+	return textureId;
+}
 int balok (float n) {
 	glBegin(GL_QUADS);
     glVertex3f(-n, n/2, n/2);
@@ -414,6 +421,35 @@ void dinding()
 	kubus(1);
 	glPopMatrix();
 	
+	for ( int i = -90 ; i <=15 ; i+=10.5 )
+	{
+		glPushMatrix();
+		glColor3f(1,1,1);
+		glTranslated(109,48,i);
+		glScalef(10,2,2);
+		kubus(1);
+		glPopMatrix();
+		
+		glPushMatrix();
+		glColor3f(0,0,1);
+		glTranslated(109,34,i);
+		glScalef(10,2,2);
+		kubus(1);
+		glPopMatrix();
+	}
+		glEnable(GL_TEXTURE_2D);
+glBindTexture(GL_TEXTURE_2D, _textureId);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glPushMatrix();
+		glColor3f(0,0,6);
+		glTranslated(116,41,-37.5);
+		glScalef(4,20,105);
+		kubus(1);
+		glPopMatrix();
+		glDisable(GL_TEXTURE_2D);
+	
+	
 	//atapkanan
 	glPushMatrix();
 	glColor3f(0.9,0.9,0.9);
@@ -431,7 +467,7 @@ void dinding()
 	glPopMatrix();
 	
 	glPushMatrix();
-	glColor3f(0.7, 0.7, 0.7);
+	glColor3f(0, 0, 1);
 	glTranslatef(63.5,28.125,-112);
 	glScalef(2,65.75,44);
 	kubus(1);
@@ -439,7 +475,7 @@ void dinding()
 	
 	//depankanankubus
 	glPushMatrix();
-	glColor3f(0.7, 0.7, 0.7);
+	glColor3f(0.0, 0.0, 1.0);
 	glTranslatef(63.5,28.125,38.5);
 	glScalef(2,65.75,47);
 	kubus(1);
@@ -483,7 +519,7 @@ void dinding()
 	glPopMatrix();
 	
 	//depan kiri
-	glBegin(GL_TRIANGLES);
+	glBegin(GL_TRIANGLES); 
 	glVertex3f(105,21,15);
 	glVertex3f(62,-4.75,15);
 	glVertex3f(105,-4.75,15);
@@ -503,6 +539,8 @@ void dinding()
 	glScalef(125,62.0,3);
 	kubus(1);
 	glPopMatrix();
+	
+	
 	
 	//atapdepan
 	glPushMatrix();
@@ -782,14 +820,17 @@ void init (void)
 	
 	glClearColor (0.0 , 0.0 , 0.0 ,1.0);
 	glMatrixMode(GL_PROJECTION);
-	glEnable(GL_LIGHTING);
+	Image* image = loadBMP("Donny1.bmp");
+	_textureId = loadTexture(image);
+	//glEnable(GL_LIGHTING);
 	glEnable(GL_COLOR_MATERIAL);
-	glEnable(GL_LIGHT0);
+//	glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
 	is_depth = 1;
 	glMatrixMode(GL_MODELVIEW);
 	glPointSize(9.0);
-
+//	GLfloat light_position[] = {1.0,1.0,1.0,1.0};
+	//GLfloat mat_specular[] = {1.0,1.0,1.0,1.0};
 }
 
 int kubus (float n) {
@@ -2788,7 +2829,7 @@ void ukuran (int lebar , int tinggi)
 	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(120.0 , lebar/tinggi , 5.0 , 5000.0);
+	gluPerspective(120.0 , lebar/tinggi , 5.0 , 500.0);
 	glTranslatef(0.0 , -5.0 , -150.0);
 	glMatrixMode(GL_MODELVIEW);
 	glutTimerFunc(25, update, 0);
